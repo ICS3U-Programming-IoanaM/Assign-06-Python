@@ -8,7 +8,7 @@
 
 def rerun():
     print()
-    while (True):
+    while True:
         # asks user if they want to rerun the program
         play_again = input("Do you want to rerun the program? (y/n) ")
 
@@ -42,7 +42,7 @@ def shift_left(user_list, shifts):
     return user_list
 
 
-# function to display what the program is about and how to use it 
+# function to display what the program is about and how to use it
 def opening_message():
     print()
     print("Hello and thank you for using this program!")
@@ -68,17 +68,17 @@ def main():
     # opening message
     opening_message()
 
-    while(go_again):
+    while go_again:
         # lists
         list_of_inputs = []
         final_list = []
 
         # getting user input for each number
-        while(True):
+        while True:
             user_input = input("Enter a number you want in your list (/q to quit): ")
 
             # user doesn't want to enter more numbers
-            if (user_input == "/q"):
+            if user_input == "/q":
                 break
 
             # adds input to list
@@ -101,15 +101,17 @@ def main():
 
         # user input is valid
         else:
-            while(True):
+            while True:
                 # asks which direction the user wants to shift elements to
-                direction = input("which way do you want to shift the elements (l for left r for right)? ")
+                direction = input(
+                    "which way do you want to shift the elements (l for left r for right)? "
+                )
 
                 if direction == "l":
                     # calls function to shift to the left
                     final_list = shift_left(list_of_inputs, shifted_elements_int)
                     break
-                
+
                 elif direction == "r":
                     # call function to shift to the right
                     final_list = shift_right(list_of_inputs, shifted_elements_int)
@@ -118,7 +120,9 @@ def main():
                 print("Please enter either l or r.")
 
             # final message
-            print(f"The list shifted {shifted_elements_int} elements to the left is {final_list}")
+            print(
+                f"The list shifted {shifted_elements_int} elements to the left is {final_list}"
+            )
             go_again = rerun()
 
 
