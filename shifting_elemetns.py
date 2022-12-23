@@ -22,16 +22,16 @@ def shift_list(nums_list, shifts):
 def opening_message():
     print()
     print("Hello and thank you for using this program!")
-    print("In this program, you will be entering numbers to add into a list, then the")
-    print("elements (numbers) will shift to the left x amount of times.")
+    print("In this program, you will be entering values to add into a list, then the")
+    print("elements (the values) will shift to the left x amount of times.")
     print("Example:")
-    print("Enter a number (q to quit): 3")
-    print("Enter a number (q to quit): 2")
-    print("Enter a number (q to quit): 1")
-    print("Enter a number (q to quit): q")
-    print("Here is your list: [3, 2, 1]")
+    print("Enter a number (/q to quit): 3")
+    print("Enter a number (/q to quit): abc")
+    print("Enter a number (/q to quit): 1.1")
+    print("Enter a number (/q to quit): q")
+    print("Here is your list: [3, abc, 1.1]")
     print("How many elements to the left do you want to shift this list? 2")
-    print("Your list shifted 2 elements to the left is [2, 1, 3]")
+    print("Your list shifted 2 elements to the left is [abc, 1.1, 3]")
     print()
     print()
 
@@ -39,7 +39,7 @@ def opening_message():
 # main gets user input and runs all the other functions
 def main():
     # variables
-    list_of_int = []
+    list_of_inputs = []
     final_list = []
 
     # opening message
@@ -47,26 +47,17 @@ def main():
 
     # getting user input for each number
     while(True):
-        user_num_str = input("Enter a number you want in your list (q to quit): ")
+        user_input = input("Enter a number you want in your list (q to quit): ")
 
         # user doesn't want to enter more numbers
-        if (user_num_str == "q" or user_num_str == "Q"):
+        if (user_input == "/q"):
             break
 
-        # exception handling
-        try:
-            user_num_int = int(user_num_str)
+        # adds input to list
+        list_of_inputs.append(user_input)
 
-        # user input is not an integer
-        except Exception:
-            print("Please make sure your input is an integer!")
-
-        # use input is an integer
-        else:
-            # adds user input to the list
-            list_of_int.append(user_num_int)
-
-    print(f"Here is your list: {list_of_int}")
+    # displays the list
+    print(f"Here is your list: {list_of_inputs}")
 
     # gets user input for how many elements to the left the user wants to shift to the left
     shifted_elements_str = input("How many elements do you want to shift to the left? ")
@@ -82,7 +73,7 @@ def main():
     # user input is valid
     else:
         # calls function to shit the elements of the list
-        final_list = shift_list(list_of_int, shifted_elements_int)
+        final_list = shift_list(list_of_inputs, shifted_elements_int)
 
         # final message
         print(f"The list shifted {shifted_elements_int} elements to the left is {final_list}")
