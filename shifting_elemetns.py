@@ -21,16 +21,25 @@ def rerun():
         print("Please type either y or n.")
 
 
-def shift_list(nums_list, shifts):
+def shift_right(user_list, shifts):
+    for counter in range(shifts):
+        first_element = user_list[0]
+        user_list.pop(0)
+        user_list.append(first_element)
+
+    return user_list
+
+
+def shift_left(user_list, shifts):
     # variables
-    list_length = len(nums_list) - 1
+    list_length = len(user_list) - 1
 
     for counter in range(shifts):
-        previous_element = nums_list[list_length]
-        nums_list.pop(list_length)
-        nums_list.insert(0, previous_element)
+        previous_element = user_list[list_length]
+        user_list.pop(list_length)
+        user_list.insert(0, previous_element)
 
-    return nums_list
+    return user_list
 
 
 # function to display what the program is about and how to use it 
@@ -66,7 +75,7 @@ def main():
 
         # getting user input for each number
         while(True):
-            user_input = input("Enter a number you want in your list (q to quit): ")
+            user_input = input("Enter a number you want in your list (/q to quit): ")
 
             # user doesn't want to enter more numbers
             if (user_input == "/q"):
@@ -79,7 +88,7 @@ def main():
         print(f"Here is your list: {list_of_inputs}")
 
         # gets user input for how many elements to the left the user wants to shift to the left
-        shifted_elements_str = input("How many elements do you want to shift to the left? ")
+        shifted_elements_str = input("How many elements do you want to shift? ")
 
         # exception handling for second set of input
         try:
@@ -92,8 +101,21 @@ def main():
 
         # user input is valid
         else:
-            # calls function to shit the elements of the list
-            final_list = shift_list(list_of_inputs, shifted_elements_int)
+            while(True):
+                # asks which direction the user wants to shift elements to
+                direction = input("which way do you want to shift the elements (l for left r for right)? ")
+
+                if direction == "l":
+                    # calls function to shift to the left
+                    final_list = shift_left(list_of_inputs, shifted_elements_int)
+                    break
+                
+                elif direction == "r":
+                    # call function to shift to the right
+                    final_list = shift_right(list_of_inputs, shifted_elements_int)
+                    break
+
+                print("Please enter either l or r.")
 
             # final message
             print(f"The list shifted {shifted_elements_int} elements to the left is {final_list}")
