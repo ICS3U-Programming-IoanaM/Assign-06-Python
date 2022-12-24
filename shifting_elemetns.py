@@ -21,7 +21,9 @@ def rerun():
         print("Please type either y or n.")
 
 
+# function that shifts the elements of the list to the right
 def shift_right(user_list, shifts):
+    # actually shifts the elements
     for counter in range(shifts):
         first_element = user_list[0]
         user_list.pop(0)
@@ -30,10 +32,12 @@ def shift_right(user_list, shifts):
     return user_list
 
 
+# function that shifts the elements of the list to the left
 def shift_left(user_list, shifts):
     # variables
     list_length = len(user_list) - 1
 
+    # actually shifts the elements
     for counter in range(shifts):
         previous_element = user_list[list_length]
         user_list.pop(list_length)
