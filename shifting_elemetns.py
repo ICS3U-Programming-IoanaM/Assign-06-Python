@@ -22,7 +22,7 @@ def rerun():
 
 
 # function that shifts the elements of the list to the right
-def shift_right(user_list, shifts):
+def shift_left(user_list, shifts):
     # actually shifts the elements
     for counter in range(shifts):
         first_element = user_list[0]
@@ -33,7 +33,7 @@ def shift_right(user_list, shifts):
 
 
 # function that shifts the elements of the list to the left
-def shift_left(user_list, shifts):
+def shift_right(user_list, shifts):
     # variables
     list_length = len(user_list) - 1
 
