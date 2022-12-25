@@ -105,28 +105,36 @@ def main():
 
         # user input is valid
         else:
-            while True:
-                # asks which direction the user wants to shift elements to
-                direction = input(
-                    "which way do you want to shift the elements (l for left r for right)? "
+            # user input is negative
+            if shifted_elements_int < 0:
+                print(
+                    f"You can't shift a list {shifted_elements_int} times! Please enter a positive integer!"
                 )
 
-                if direction == "l":
-                    # calls function to shift to the left
-                    final_list = shift_left(list_of_inputs, shifted_elements_int)
-                    break
+            # user input is whole
+            else:
+                while True:
+                    # asks which direction the user wants to shift elements to
+                    direction = input(
+                        "which way do you want to shift the elements (l for left r for right)? "
+                    )
 
-                elif direction == "r":
-                    # call function to shift to the right
-                    final_list = shift_right(list_of_inputs, shifted_elements_int)
-                    break
+                    if direction == "l":
+                        # calls function to shift to the left
+                        final_list = shift_left(list_of_inputs, shifted_elements_int)
+                        break
 
-                print("Please enter either l or r.")
+                    elif direction == "r":
+                        # call function to shift to the right
+                        final_list = shift_right(list_of_inputs, shifted_elements_int)
+                        break
 
-            # final message
-            print(
-                f"The list shifted {shifted_elements_int} elements to the left is {final_list}"
-            )
+                    print("Please enter either l or r.")
+
+                # final message
+                print(
+                    f"The list shifted {shifted_elements_int} elements to the left is {final_list}"
+                )
             go_again = rerun()
 
 
